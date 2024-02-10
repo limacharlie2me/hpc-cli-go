@@ -1,0 +1,22 @@
+hooks:
+  after:
+    - goreleaser --rm-dist
+    - homebrew-artifactory-publisher publish-formula hpc-cli-go
+
+bumps:
+  - file: version.go
+
+    regex:
+      - pattern: "$VERSION"
+        semver: true
+        count: 1
+
+annotatedTags: true
+
+changelog:
+  exclude:
+    - ^docs
+    - ^ci
+    - ^style
+    - ^chore
+    - ^refactor
